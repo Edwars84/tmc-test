@@ -10,8 +10,11 @@ also add line
 to /etc/hosts
 
 #Questions 
+
 ##1. Hive and Hdfs.
+
 ###1.1. Load the csv attachment in hdfs.
+
 `docker cp /home/edu/IdeaProjects/tmc-test/src/main/resources/CSV-Prueba.csv namenode:/home/CSV-Prueba.csv`
 
 `docker exec -it namenode hdfs dfs -mkdir /test`
@@ -19,6 +22,7 @@ to /etc/hosts
 `docker exec -it namenode hdfs dfs -put /home/CSV-Prueba.csv /test/CSV-Prueba.csv`
 
 ###1.2.Create table in hive.
+
 `docker exec -it hive-server /bin/bash`
 
 `beeline -u jdbc:hive2://localhost:10000 -n hive -p hive`
@@ -30,9 +34,11 @@ to /etc/hosts
 `INSERT INTO TABLE csv_test SELECT * FROM external_csv;`
 
 ###1.3.Hive
+
 ####1.3.1. Generate a query to obtain a most birthdays on 1 day
 
 `select bday_day, bday_month, count(1) as num_bdays from external_csv group by bday_month, bday_day order by num_bdays desc limit 1;`
 
 ####1.3.2. Generate a query to obtain Least birthdays are on 11 months
+
  I'm very sorry but I don't understand this question
